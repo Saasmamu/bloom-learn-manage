@@ -12,12 +12,42 @@ import {
   UserPlus,
   FileText,
   BarChart3,
-  Shield
+  Shield,
+  Loader2
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useState } from "react";
 
 const AdminDashboard = () => {
-  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+  const [profile, setProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!user) return;
+      
+      const { data } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      setProfile(data);
+      setLoading(false);
+    };
+
+    fetchProfile();
+  }, [user]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   const recentActivities = [
     { action: "New student enrolled", user: "Ahmed Khan", time: "5 minutes ago" },
@@ -49,7 +79,7 @@ const AdminDashboard = () => {
             <Button variant="ghost" size="icon">
               <Settings className="h-5 w-5" />
             </Button>
-            <Button variant="outline" onClick={() => navigate("/")}>
+            <Button variant="outline" onClick={signOut}>
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>
@@ -60,7 +90,9 @@ const AdminDashboard = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">Admin Dashboard</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Welcome, {profile?.full_name || 'Admin'}!
+          </h2>
           <p className="text-muted-foreground">Manage and oversee the entire education system.</p>
         </div>
 

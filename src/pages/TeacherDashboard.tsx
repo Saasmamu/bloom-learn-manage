@@ -10,12 +10,42 @@ import {
   LogOut,
   CheckSquare,
   Clock,
-  MessageSquare
+  MessageSquare,
+  Loader2
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useState } from "react";
 
 const TeacherDashboard = () => {
-  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+  const [profile, setProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!user) return;
+      
+      const { data } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      setProfile(data);
+      setLoading(false);
+    };
+
+    fetchProfile();
+  }, [user]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   const myClasses = [
     { name: "Mathematics 101", students: 32, time: "Mon, Wed, Fri - 10:00 AM", room: "Room 301" },
@@ -42,7 +72,7 @@ const TeacherDashboard = () => {
             <Button variant="ghost" size="icon">
               <Bell className="h-5 w-5" />
             </Button>
-            <Button variant="outline" onClick={() => navigate("/")}>
+            <Button variant="outline" onClick={signOut}>
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>
@@ -53,7 +83,9 @@ const TeacherDashboard = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">Welcome, Dr. Sarah!</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Welcome, {profile?.full_name || 'Teacher'}!
+          </h2>
           <p className="text-muted-foreground">Manage your classes and engage with students.</p>
         </div>
 
