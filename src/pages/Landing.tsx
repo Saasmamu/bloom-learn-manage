@@ -1,10 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Users, GraduationCap, BarChart3, Shield, Clock } from "lucide-react";
+import { BookOpen, Users, GraduationCap, BarChart3, Shield } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { user, loading, getUserRole } = useAuth();
+
+  useEffect(() => {
+    if (!loading && user) {
+      getUserRole().then((role) => {
+        if (role === 'student') navigate('/student');
+        else if (role === 'teacher') navigate('/teacher');
+        else if (role === 'admin') navigate('/admin');
+      });
+    }
+  }, [user, loading, getUserRole, navigate]);
 
   const features = [
     {

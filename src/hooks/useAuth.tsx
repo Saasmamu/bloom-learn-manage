@@ -108,6 +108,24 @@ export const useAuth = () => {
     }
   };
 
+  const getUserRole = async () => {
+    if (!user) return null;
+    
+    try {
+      const { data, error } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error) throw error;
+      return data?.role || null;
+    } catch (error: any) {
+      console.error('Error fetching user role:', error);
+      return null;
+    }
+  };
+
   return {
     user,
     session,
@@ -115,5 +133,6 @@ export const useAuth = () => {
     signUp,
     signIn,
     signOut,
+    getUserRole,
   };
 };
