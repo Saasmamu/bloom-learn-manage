@@ -6,21 +6,23 @@ import {
   BookOpen, 
   Calendar, 
   TrendingUp,
-  Bell,
-  Settings,
-  LogOut,
   UserPlus,
   FileText,
   BarChart3,
   Shield,
-  Loader2
+  Loader2,
+  GraduationCap,
+  Building2,
+  Settings
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -64,30 +66,8 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-bold text-foreground">Admin Portal</h1>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Settings className="h-5 w-5" />
-            </Button>
-            <Button variant="outline" onClick={signOut}>
-              <LogOut className="h-4 w-4 mr-2" />
-              Logout
-            </Button>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto px-4 py-8">
+    <div>
+      <div className="max-w-7xl mx-auto">
         {/* Welcome Section */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-foreground mb-2">
@@ -151,29 +131,49 @@ const AdminDashboard = () => {
               Quick Actions
             </h3>
             <div className="space-y-3">
-              <Button className="w-full justify-start" variant="default">
+              <Button 
+                className="w-full justify-start" 
+                variant="default"
+                onClick={() => navigate('/admin/users')}
+              >
                 <UserPlus className="h-4 w-4 mr-2" />
-                Add New Student
+                Manage Users
               </Button>
-              <Button className="w-full justify-start" variant="outline">
-                <Users className="h-4 w-4 mr-2" />
-                Manage Teachers
+              <Button 
+                className="w-full justify-start" 
+                variant="outline"
+                onClick={() => navigate('/admin/schools')}
+              >
+                <Building2 className="h-4 w-4 mr-2" />
+                Schools
               </Button>
-              <Button className="w-full justify-start" variant="outline">
-                <BookOpen className="h-4 w-4 mr-2" />
-                Create Course
-              </Button>
-              <Button className="w-full justify-start" variant="outline">
+              <Button 
+                className="w-full justify-start" 
+                variant="outline"
+                onClick={() => navigate('/admin/academic-years')}
+              >
                 <Calendar className="h-4 w-4 mr-2" />
-                Set Timetable
+                Academic Years
+              </Button>
+              <Button 
+                className="w-full justify-start" 
+                variant="outline"
+                onClick={() => navigate('/admin/classes')}
+              >
+                <GraduationCap className="h-4 w-4 mr-2" />
+                Classes
+              </Button>
+              <Button 
+                className="w-full justify-start" 
+                variant="outline"
+                onClick={() => navigate('/admin/subjects')}
+              >
+                <BookOpen className="h-4 w-4 mr-2" />
+                Subjects
               </Button>
               <Button className="w-full justify-start" variant="outline">
                 <BarChart3 className="h-4 w-4 mr-2" />
                 View Analytics
-              </Button>
-              <Button className="w-full justify-start" variant="outline">
-                <FileText className="h-4 w-4 mr-2" />
-                Generate Reports
               </Button>
             </div>
           </Card>

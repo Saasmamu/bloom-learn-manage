@@ -10,6 +10,12 @@ import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import NotFound from "./pages/NotFound";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AdminLayout } from "./components/admin/AdminLayout";
+import { SchoolManagement } from "./components/admin/SchoolManagement";
+import { AcademicYearManagement } from "./components/admin/AcademicYearManagement";
+import { ClassManagement } from "./components/admin/ClassManagement";
+import { SubjectManagement } from "./components/admin/SubjectManagement";
+import { UserManagement } from "./components/admin/UserManagement";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +40,59 @@ const App = () => (
             path="/admin" 
             element={
               <ProtectedRoute requiredRole="admin">
-                <AdminDashboard />
+                <AdminLayout>
+                  <AdminDashboard />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/schools" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <SchoolManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/academic-years" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <AcademicYearManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/classes" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <ClassManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/subjects" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <SubjectManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/users" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <UserManagement />
+                </AdminLayout>
               </ProtectedRoute>
             } 
           />
