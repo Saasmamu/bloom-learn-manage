@@ -96,13 +96,13 @@ const App = () => (
               </ProtectedRoute>
             } 
           />
-          <Route 
-            path="/teacher" 
+          <Route
+            path="/teacher/*"
             element={
               <ProtectedRoute requiredRole="teacher">
                 <TeacherDashboard />
               </ProtectedRoute>
-            } 
+            }
           />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
