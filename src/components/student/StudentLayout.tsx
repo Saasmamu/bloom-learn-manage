@@ -24,6 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { NotificationBell } from "@/components/shared/NotificationBell";
 
 interface StudentLayoutProps {
   children: ReactNode;
@@ -93,9 +94,7 @@ export function StudentLayout({ children }: StudentLayoutProps) {
             <div className="h-full px-4 flex items-center justify-between">
               <SidebarTrigger />
               <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon">
-                  <Bell className="h-5 w-5" />
-                </Button>
+                <NotificationBell />
               </div>
             </div>
           </header>
