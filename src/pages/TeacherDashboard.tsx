@@ -4,6 +4,7 @@ import { TeacherClasses } from "@/components/teacher/TeacherClasses";
 import { TeacherAssignments } from "@/components/teacher/TeacherAssignments";
 import { TeacherGrading } from "@/components/teacher/TeacherGrading";
 import { TeacherAttendance } from "@/components/teacher/TeacherAttendance";
+import { TeacherMaterials } from "@/components/teacher/TeacherMaterials";
 
 export default function TeacherDashboard() {
   return (
@@ -14,7 +15,7 @@ export default function TeacherDashboard() {
         <Route path="/assignments" element={<TeacherAssignments />} />
         <Route path="/grading" element={<TeacherGrading />} />
         <Route path="/attendance" element={<TeacherAttendance />} />
-        <Route path="/materials" element={<div>Materials coming soon</div>} />
+        <Route path="/materials" element={<TeacherMaterials />} />
         <Route path="/students" element={<div>Students coming soon</div>} />
       </Routes>
     </TeacherLayout>
