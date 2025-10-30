@@ -94,24 +94,30 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background islamic-pattern flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
         <Button
           variant="ghost"
           onClick={() => navigate("/")}
-          className="mb-4"
+          className="mb-4 hover:bg-primary/10"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Button>
 
-        <Card className="p-8 shadow-xl">
+        <Card className="p-8 shadow-2xl border-2 border-primary/10 backdrop-blur-sm bg-card/95">
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <BookOpen className="h-12 w-12 text-primary" />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-full blur-lg opacity-50"></div>
+                <div className="relative bg-gradient-to-br from-primary to-accent p-3 rounded-full">
+                  <BookOpen className="h-10 w-10 text-white" />
+                </div>
+              </div>
             </div>
-            <h1 className="text-3xl font-bold text-foreground">EduManage LMS</h1>
-            <p className="text-muted-foreground mt-2">Access your learning portal</p>
+            <h1 className="text-3xl font-bold font-arabic text-gradient-islamic">Bloom Learn</h1>
+            <p className="text-xs text-muted-foreground mt-1">Islamic Education Center</p>
+            <p className="text-muted-foreground mt-3">Access your learning portal</p>
           </div>
 
           <Tabs defaultValue="login" className="w-full">

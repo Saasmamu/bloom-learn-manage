@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NHK Islamic Learning Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Amiri:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .font-amiri {
+        font-family: 'Amiri', serif;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#006A4E",
+              "secondary": "#D4AF37",
+              "background-light": "#F9F9F9",
+              "background-dark": "#102216",
+              "text-light": "#111813",
+              "text-dark": "#F0F4F2"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "heading": ["Amiri", "serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative w-full">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-black/10 dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4 md:px-10 lg:px-20 py-3">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path>
+</svg>
+</div>
+<h2 class="text-text-light dark:text-text-dark text-xl font-bold font-display">NHK Islamic Learning Center</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#courses">Courses</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#events">Events</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#admissions">Admissions</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#teachers">Teachers</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+<span class="truncate">Apply Now</span>
+</button>
+<button class="lg:hidden p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col items-center">
+<div class="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+<!-- Hero Section -->
+<section class="w-full py-20 md:py-32" id="hero">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 text-center" data-alt="Subtle Arabic geometric patterns in the background" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgvF0HwlykyL4g0BtsKaKnipfff1sGnBRFQg_bl-E8ISwXvaeXGIABJstA3TFYbIYsy44W_Nz8FiFdDxaZD_IESkci1Ams3fcdOwzblzA7HCm4DrCp226B1ks10017wlxs-PAXed6RcVrYMDW7_C79MXpXxs5BL99LwQzRb-O7ZcvarUHGr4Yg7wKfVM4D1Jzg5gb_YAAPJQjl97TrRLmaYRzA5ezSE0pfT68Z8DoQi_iEPB8LWWsJn28TUi4jsZMFJExD-5BV9gI');">
+<div class="flex flex-col gap-4">
+<h1 class="text-white text-5xl md:text-7xl font-heading leading-tight tracking-wide">
+                                Enlightening Minds, Nurturing Souls
+                            </h1>
+<p class="text-white/90 text-base md:text-lg font-normal leading-normal max-w-3xl mx-auto">
+                                NHK is an Islamic learning center dedicated to teaching the Qur'an, Arabic, and essential Islamic knowledge for all ages in a structured and nurturing environment.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-4 justify-center mt-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-primary text-white text-base font-bold hover:opacity-90 transition-opacity">
+<span class="truncate">View Courses</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-background-light text-text-light text-base font-bold hover:opacity-90 transition-opacity dark:bg-background-dark dark:text-text-dark">
+<span class="truncate">Apply Now</span>
+</button>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="w-full py-16 md:py-24 text-center" id="about">
+<h2 class="text-text-light dark:text-text-dark text-4xl font-heading leading-tight tracking-wide">About NHK</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-base font-normal leading-relaxed max-w-3xl mx-auto mt-4">
+                        NHK is an Islamic learning center dedicated to teaching the Qur'an, Arabic, and essential Islamic knowledge for all ages in a structured and nurturing environment. Learn about our history, mission, and our commitment to fostering a community of knowledgeable and compassionate individuals.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-left">
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-3 p-6 bg-white dark:bg-black/20 rounded-xl border border-black/10 dark:border-white/10">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<h3 class="font-bold text-lg">Qur'an Studies</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">Master recitation and understanding of the Holy Qur'an with our dedicated instructors.</p>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-3 p-6 bg-white dark:bg-black/20 rounded-xl border border-black/10 dark:border-white/10">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">translate</span>
+</div>
+<h3 class="font-bold text-lg">Arabic Language</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">Learn the language of the Qur'an, from beginner to advanced levels.</p>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-3 p-6 bg-white dark:bg-black/20 rounded-xl border border-black/10 dark:border-white/10">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<h3 class="font-bold text-lg">Nurturing Environment</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">A supportive and encouraging community for students of all ages and backgrounds.</p>
+</div>
+</div>
+</section>
+<!-- Courses Section -->
+<section class="w-full py-16 md:py-24 text-center" id="courses">
+<h2 class="text-text-light dark:text-text-dark text-4xl font-heading leading-tight tracking-wide">Our Courses</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-base font-normal leading-relaxed max-w-3xl mx-auto mt-4">
+                        Explore our range of courses designed to deepen your understanding and connection with Islam.
+                    </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 text-left">
+<div class="flex flex-col bg-white dark:bg-black/20 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm hover:shadow-lg transition-shadow">
+<img class="h-48 w-full object-cover" data-alt="An open Quran on a stand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmzPeXaDV8vuktpgPpHgdx9YTtaXSp7fWi4Re6AcNKKVK1iPM52OCKP1EPIBTLMUZeNHzoiyPgd-YQLZQUKT2CCjDJiYuQpbG0NxjTWpkcSFc4NerELJ7QXFk7te1Xg2Xb8g3nzfFAbNwxvVeQbHzvEVoPGnIyALPRY8rDl_IIxugIUGil5drNSZNpK8WXuZ6BRGZvfPsmAoj3ORWig11_MyjLtIjgvvPox4By5gSnjxb6pA_nrUjEkcsKJqD7E4CQ1Xr1dhZvRPY"/>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-bold text-lg">Qur'an Recitation &amp; Tajweed</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70 mt-2 flex-grow">Perfect the art of reciting the Qur'an with correct pronunciation and rules.</p>
+<a class="mt-4 text-sm font-bold text-primary hover:underline" href="#">Learn More</a>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-black/20 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm hover:shadow-lg transition-shadow">
+<img class="h-48 w-full object-cover" data-alt="Arabic calligraphy being written on paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeveflKn0vxSfjp1872ozloXVmzCdpdf5MQx0BS83Em0wR_BaW-2m8fnTa7Y-7qaeBmcygITyffKNx8YQPcTgrHwu7SjGujXwpOaMb4A2CjtSYN8crXs0cWdCSwDsG2-Exg9BdSxIJIeRQ6LorCxtgFG6CMUw6Uxgh5zbqDcCR2UeZy6Q13gHCjWSkRm-MBzPw6fxGB3_JLB8E-y0uDXLcE9pd-XlqGluAmomU-tvBoDAlKSVQOFF684GAlT0jymMrGbnq8UIVOhw"/>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-bold text-lg">Arabic Language for All</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70 mt-2 flex-grow">Comprehensive Arabic courses covering reading, writing, and conversation.</p>
+<a class="mt-4 text-sm font-bold text-primary hover:underline" href="#">Learn More</a>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-black/20 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm hover:shadow-lg transition-shadow">
+<img class="h-48 w-full object-cover" data-alt="A group of young children sitting and learning in a classroom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACigHnPI1n-T9YgHxZIOGBjuL0P-jRyhvFyD-lwODU5ZWcph4e33lrd08rXlZR0VSjomVU0PSYAVK8OgIgKfmUEmSRfXqIjyQLBelFDaqKpfVBn7A25o_-WQzTEbBl7TM8yNlCV0lUw1oZpqbWAD6ORJHoYO1YBbNOvax9VR4_FMpo5w9XW1e4cf029-82izulw9m6zr5O0A0o-eYMMa4PSyW4M3T5JVCFjPsgEXUGCH4ed_LwADoOodo3nRveXvBV2LzRBnqIIYA"/>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-bold text-lg">Islamic Studies for Youth</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70 mt-2 flex-grow">Engaging lessons on Islamic history, ethics, and practices for young minds.</p>
+<a class="mt-4 text-sm font-bold text-primary hover:underline" href="#">Learn More</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="w-full py-16 md:py-24" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="text-center lg:text-left">
+<h2 class="text-text-light dark:text-text-dark text-4xl font-heading leading-tight tracking-wide">Get in Touch</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-base font-normal leading-relaxed mt-4">We would love to hear from you. Reach out with any questions or to begin your learning journey with us.</p>
+<div class="mt-8 space-y-4">
+<div class="flex items-center gap-4 justify-center lg:justify-start">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span>123 Knowledge Way, Faith City, 45678</span>
+</div>
+<div class="flex items-center gap-4 justify-center lg:justify-start">
+<span class="material-symbols-outlined text-primary">phone</span>
+<span>(123) 456-7890</span>
+</div>
+<div class="flex items-center gap-4 justify-center lg:justify-start">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span>contact@nhkcenter.org</span>
+</div>
+</div>
+</div>
+<div class="p-8 bg-white dark:bg-black/20 rounded-xl border border-black/10 dark:border-white/10 shadow-sm">
+<form class="flex flex-col gap-4">
+<input class="w-full h-12 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10" placeholder="Your Name" type="text"/>
+<input class="w-full h-12 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10" placeholder="Your Email" type="email"/>
+<input class="w-full h-12 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10" placeholder="Subject" type="text"/>
+<textarea class="w-full h-32 p-4 rounded-lg bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10" placeholder="Your Message"></textarea>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-primary text-white text-base font-bold hover:opacity-90 transition-opacity" type="submit">
+<span class="truncate">Send Message</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-white dark:bg-black/20 border-t border-black/10 dark:border-white/10 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path></svg>
+</div>
+<h2 class="text-text-light dark:text-text-dark text-xl font-bold font-display">NHK Islamic Learning Center</h2>
+</div>
+<p class="mt-4 text-sm text-text-light/70 dark:text-text-dark/70 max-w-sm">A place for spiritual and intellectual growth, rooted in Islamic tradition.</p>
+</div>
+<div>
+<h4 class="font-bold">Quick Links</h4>
+<nav class="mt-4 flex flex-col gap-2">
+<a class="text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" href="#courses">Courses</a>
+<a class="text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" href="#events">Events</a>
+<a class="text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Contact</a>
+</nav>
+</div>
+<div>
+<h4 class="font-bold">Follow Us</h4>
+<div class="mt-4 flex gap-4">
+<a class="text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Facebook icon" href="#">
+<svg aria-hidden="true" class="size-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-primary transition-colors" data-alt="Instagram icon" href="#">
+<svg aria-hidden="true" class="size-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 0 1 1.772 1.153 4.902 4.902 0 0 1 1.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 0 1-1.153 1.772 4.902 4.902 0 0 1-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 0 1-1.772-1.153 4.902 4.902 0 0 1-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 0 1 1.153-1.772A4.902 4.902 0 0 1 6.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2ZM12 7.177a4.823 4.823 0 1 0 0 9.646 4.823 4.823 0 0 0 0-9.646ZM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm4.805-9.75a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-black/10 dark:border-white/10 pt-8 text-center text-sm text-text-light/60 dark:text-text-dark/60">
+<p>© 2024 NHK Islamic Learning Center. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -111,4 +113,26 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Islamic themed styles */
+.font-arabic {
+  font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+}
+
+.islamic-pattern {
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 35px, hsl(145 65% 45% / 0.03) 35px, hsl(145 65% 45% / 0.03) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, hsl(42 85% 55% / 0.02) 35px, hsl(42 85% 55% / 0.02) 70px);
+}
+
+.islamic-border {
+  border-image: linear-gradient(135deg, hsl(145 65% 45%), hsl(42 85% 55%)) 1;
+}
+
+.text-gradient-islamic {
+  background: linear-gradient(135deg, hsl(145 65% 45%), hsl(42 85% 55%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
