@@ -57,6 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        'nhk-dark': '#111813',
+        'nhk-light': '#f0f4f2',
+        'nhk-green': '#11d452',
+        'nhk-muted': '#61896f',
+      },
+      fontFamily: {
+        lexend: ['Lexend', 'sans-serif'],
+        'noto-sans': ['"Noto Sans"', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
