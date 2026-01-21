@@ -1,46 +1,57 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { 
-  Users, 
-  BookOpen, 
-  Calendar, 
-  TrendingUp,
   UserPlus,
-  FileText,
   BarChart3,
   Shield,
   Loader2,
   GraduationCap,
   Building2,
-  Settings
+  Calendar,
+  BookOpen,
+  TrendingUp,
+  Settings,
+  Users
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DashboardStatsCards } from "@/components/admin/DashboardStats";
 
 const AdminDashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [recentActivities, setRecentActivities] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchData = async () => {
       if (!user) return;
       
-      const { data } = await supabase
+      // Fetch profile
+      const { data: profileData } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
       
-      setProfile(data);
+      setProfile(profileData);
+
+      // Fetch recent notifications as activities
+      const { data: notifications } = await supabase
+        .from('notifications')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+      setRecentActivities(notifications || []);
       setLoading(false);
     };
 
-    fetchProfile();
+    fetchData();
   }, [user]);
 
   if (loading) {
@@ -50,20 +61,6 @@ const AdminDashboard = () => {
       </div>
     );
   }
-
-  const recentActivities = [
-    { action: "New student enrolled", user: "Ahmed Khan", time: "5 minutes ago" },
-    { action: "Assignment submitted", user: "Sara Ahmed", time: "15 minutes ago" },
-    { action: "Grade updated", user: "Teacher: Dr. Smith", time: "1 hour ago" },
-    { action: "New course created", user: "Admin: John Doe", time: "2 hours ago" }
-  ];
-
-  const systemStats = [
-    { label: "Server Status", value: "Operational", status: "success" },
-    { label: "Database Size", value: "2.4 GB", status: "info" },
-    { label: "Active Sessions", value: "247", status: "info" },
-    { label: "Pending Actions", value: "3", status: "warning" }
-  ];
 
   return (
     <div>
@@ -76,51 +73,9 @@ const AdminDashboard = () => {
           <p className="text-muted-foreground">Manage and oversee the entire education system.</p>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-primary/10 to-primary/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-muted-foreground text-sm">Total Students</p>
-                <p className="text-3xl font-bold text-foreground">1,247</p>
-                <p className="text-sm text-primary mt-1">+12 this week</p>
-              </div>
-              <Users className="h-10 w-10 text-primary" />
-            </div>
-          </Card>
-
-          <Card className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-secondary/10 to-secondary/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-muted-foreground text-sm">Total Teachers</p>
-                <p className="text-3xl font-bold text-foreground">89</p>
-                <p className="text-sm text-secondary mt-1">+3 this month</p>
-              </div>
-              <Users className="h-10 w-10 text-secondary" />
-            </div>
-          </Card>
-
-          <Card className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-accent/10 to-accent/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-muted-foreground text-sm">Active Courses</p>
-                <p className="text-3xl font-bold text-foreground">156</p>
-                <p className="text-sm text-accent mt-1">12 pending approval</p>
-              </div>
-              <BookOpen className="h-10 w-10 text-accent" />
-            </div>
-          </Card>
-
-          <Card className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-primary/10 to-accent/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-muted-foreground text-sm">Engagement Rate</p>
-                <p className="text-3xl font-bold text-foreground">87%</p>
-                <p className="text-sm text-primary mt-1">+5% this month</p>
-              </div>
-              <TrendingUp className="h-10 w-10 text-primary" />
-            </div>
-          </Card>
+        {/* Stats Cards - Now with real data */}
+        <div className="mb-8">
+          <DashboardStatsCards />
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -136,8 +91,16 @@ const AdminDashboard = () => {
                 variant="default"
                 onClick={() => navigate('/admin/users')}
               >
-                <UserPlus className="h-4 w-4 mr-2" />
+                <Users className="h-4 w-4 mr-2" />
                 Manage Users
+              </Button>
+              <Button 
+                className="w-full justify-start" 
+                variant="outline"
+                onClick={() => navigate('/admin/enrollments')}
+              >
+                <UserPlus className="h-4 w-4 mr-2" />
+                Enrollments
               </Button>
               <Button 
                 className="w-full justify-start" 
@@ -171,10 +134,6 @@ const AdminDashboard = () => {
                 <BookOpen className="h-4 w-4 mr-2" />
                 Subjects
               </Button>
-              <Button className="w-full justify-start" variant="outline">
-                <BarChart3 className="h-4 w-4 mr-2" />
-                View Analytics
-              </Button>
             </div>
           </Card>
 
@@ -185,22 +144,25 @@ const AdminDashboard = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
                 Recent Activities
               </h3>
-              <Button variant="outline" size="sm">View All</Button>
             </div>
             <div className="space-y-4">
-              {recentActivities.map((activity, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-all border-l-4 border-l-primary">
-                  <div className="flex justify-between items-start">
-                    <div className="space-y-1">
-                      <h4 className="font-semibold text-foreground">{activity.action}</h4>
-                      <p className="text-sm text-muted-foreground">{activity.user}</p>
+              {recentActivities.length === 0 ? (
+                <p className="text-muted-foreground text-center py-4">No recent activities</p>
+              ) : (
+                recentActivities.map((activity, index) => (
+                  <Card key={index} className="p-4 hover:shadow-md transition-all border-l-4 border-l-primary">
+                    <div className="flex justify-between items-start">
+                      <div className="space-y-1">
+                        <h4 className="font-semibold text-foreground">{activity.title}</h4>
+                        <p className="text-sm text-muted-foreground">{activity.message}</p>
+                      </div>
+                      <Badge variant="secondary" className="text-xs">
+                        {new Date(activity.created_at).toLocaleDateString()}
+                      </Badge>
                     </div>
-                    <Badge variant="secondary" className="text-xs">
-                      {activity.time}
-                    </Badge>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                ))
+              )}
             </div>
           </Card>
 
@@ -211,24 +173,34 @@ const AdminDashboard = () => {
               System Status
             </h3>
             <div className="grid md:grid-cols-4 gap-4">
-              {systemStats.map((stat, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-all">
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                    <p className="text-xl font-bold text-foreground">{stat.value}</p>
-                    <Badge 
-                      variant={
-                        stat.status === "success" ? "default" : 
-                        stat.status === "warning" ? "destructive" : 
-                        "secondary"
-                      }
-                      className="text-xs"
-                    >
-                      {stat.status}
-                    </Badge>
-                  </div>
-                </Card>
-              ))}
+              <Card className="p-4 hover:shadow-md transition-all">
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">Server Status</p>
+                  <p className="text-xl font-bold text-foreground">Operational</p>
+                  <Badge className="text-xs">Active</Badge>
+                </div>
+              </Card>
+              <Card className="p-4 hover:shadow-md transition-all">
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">Database</p>
+                  <p className="text-xl font-bold text-foreground">Connected</p>
+                  <Badge variant="secondary" className="text-xs">Healthy</Badge>
+                </div>
+              </Card>
+              <Card className="p-4 hover:shadow-md transition-all">
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">Auth Service</p>
+                  <p className="text-xl font-bold text-foreground">Running</p>
+                  <Badge className="text-xs">Active</Badge>
+                </div>
+              </Card>
+              <Card className="p-4 hover:shadow-md transition-all">
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">Storage</p>
+                  <p className="text-xl font-bold text-foreground">Available</p>
+                  <Badge variant="secondary" className="text-xs">Ready</Badge>
+                </div>
+              </Card>
             </div>
           </Card>
 
