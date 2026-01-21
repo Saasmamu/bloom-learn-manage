@@ -4,26 +4,27 @@ import { useAuth } from "@/hooks/useAuth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, Folder, File, Video, Image } from "lucide-react";
+import { FileText, ExternalLink, Folder, File, Video, Image } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 
 interface Material {
   id: string;
   title: string;
-  description: string;
-  file_url: string;
-  file_type: string;
-  uploaded_at: string;
+  description: string | null;
+  file_url: string | null;
+  material_type: string | null;
+  created_at: string;
+  section_id: string | null;
   sections: {
     section_name: string;
     classes: {
       name: string;
-    };
-  };
-  profiles: {
-    full_name: string;
-  };
+    } | null;
+  } | null;
+  subjects: {
+    name: string;
+  } | null;
 }
 
 export function StudentMaterials() {
@@ -57,42 +58,27 @@ export function StudentMaterials() {
 
       // Get materials for those sections
       const { data, error } = await supabase
-        .from("materials")
+        .from("learning_materials")
         .select(`
           id,
           title,
           description,
           file_url,
-          file_type,
-          uploaded_at,
-          section_id
+          material_type,
+          created_at,
+          section_id,
+          sections (
+            section_name,
+            classes (name)
+          ),
+          subjects (name)
         `)
         .in("section_id", sectionIds)
-        .order("uploaded_at", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
 
-      // Fetch section and teacher details separately
-      const materialsWithDetails = await Promise.all(
-        (data || []).map(async (material) => {
-          const { data: sectionData } = await supabase
-            .from("sections")
-            .select(`
-              section_name,
-              classes (name)
-            `)
-            .eq("id", material.section_id)
-            .single();
-
-          return {
-            ...material,
-            sections: sectionData || { section_name: "Unknown", classes: { name: "Unknown" } },
-            profiles: { full_name: "Teacher" },
-          };
-        })
-      );
-
-      setMaterials(materialsWithDetails as Material[]);
+      setMaterials((data as unknown as Material[]) || []);
     } catch (error: any) {
       toast({
         title: "Error fetching materials",
@@ -104,15 +90,11 @@ export function StudentMaterials() {
     }
   };
 
-  const getFileIcon = (fileType: string) => {
-    if (fileType?.includes("video")) return <Video className="h-5 w-5" />;
-    if (fileType?.includes("image")) return <Image className="h-5 w-5" />;
-    if (fileType?.includes("pdf")) return <FileText className="h-5 w-5" />;
+  const getFileIcon = (materialType: string | null) => {
+    if (materialType === "video") return <Video className="h-5 w-5" />;
+    if (materialType === "presentation") return <Image className="h-5 w-5" />;
+    if (materialType === "document") return <FileText className="h-5 w-5" />;
     return <File className="h-5 w-5" />;
-  };
-
-  const handleDownload = (fileUrl: string, title: string) => {
-    window.open(fileUrl, "_blank");
   };
 
   if (loading) {
@@ -157,11 +139,11 @@ export function StudentMaterials() {
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-2">
-                          {getFileIcon(material.file_type)}
+                          {getFileIcon(material.material_type)}
                           <CardTitle className="text-base">{material.title}</CardTitle>
                         </div>
                         <Badge variant="outline" className="text-xs">
-                          {material.sections?.section_name}
+                          {material.material_type || "document"}
                         </Badge>
                       </div>
                       {material.description && (
@@ -171,18 +153,29 @@ export function StudentMaterials() {
                       )}
                     </CardHeader>
                     <CardContent>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-muted-foreground">
-                          {format(new Date(material.uploaded_at), "PPP")}
-                        </span>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleDownload(material.file_url, material.title)}
-                        >
-                          <Download className="h-4 w-4 mr-1" />
-                          Download
-                        </Button>
+                      <div className="space-y-2">
+                        {material.subjects?.name && (
+                          <p className="text-xs text-muted-foreground">
+                            Subject: {material.subjects.name}
+                          </p>
+                        )}
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-muted-foreground">
+                            {format(new Date(material.created_at), "PPP")}
+                          </span>
+                          {material.file_url && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              asChild
+                            >
+                              <a href={material.file_url} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-1" />
+                                View
+                              </a>
+                            </Button>
+                          )}
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
