@@ -20,22 +20,25 @@ import {
   Settings,
   LogOut,
   Shield,
-  Bell,
+  UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { NotificationBell } from "@/components/shared/NotificationBell";
 
 interface AdminLayoutProps {
   children: ReactNode;
 }
 
 const menuItems = [
+  { title: "Dashboard", icon: Shield, path: "/admin" },
   { title: "Schools", icon: Building2, path: "/admin/schools" },
   { title: "Academic Years", icon: Calendar, path: "/admin/academic-years" },
   { title: "Classes", icon: GraduationCap, path: "/admin/classes" },
   { title: "Subjects", icon: BookOpen, path: "/admin/subjects" },
   { title: "Users", icon: Users, path: "/admin/users" },
+  { title: "Enrollments", icon: UserPlus, path: "/admin/enrollments" },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
@@ -76,25 +79,6 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            <SidebarGroup>
-              <SidebarGroupLabel>System</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => navigate("/admin")}>
-                      <Shield className="h-4 w-4" />
-                      <span>Dashboard</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton>
-                      <Settings className="h-4 w-4" />
-                      <span>Settings</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
           </SidebarContent>
 
           <div className="mt-auto p-4 border-t border-sidebar-border">
@@ -114,9 +98,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
             <div className="h-full px-4 flex items-center justify-between">
               <SidebarTrigger />
               <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon">
-                  <Bell className="h-5 w-5" />
-                </Button>
+                <NotificationBell />
               </div>
             </div>
           </header>
