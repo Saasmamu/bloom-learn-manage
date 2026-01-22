@@ -21,6 +21,8 @@ import {
   LogOut,
   Shield,
   UserPlus,
+  LayoutGrid,
+  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -36,7 +38,9 @@ const menuItems = [
   { title: "Schools", icon: Building2, path: "/admin/schools" },
   { title: "Academic Years", icon: Calendar, path: "/admin/academic-years" },
   { title: "Classes", icon: GraduationCap, path: "/admin/classes" },
+  { title: "Sections", icon: LayoutGrid, path: "/admin/sections" },
   { title: "Subjects", icon: BookOpen, path: "/admin/subjects" },
+  { title: "Timetable", icon: Clock, path: "/admin/timetable" },
   { title: "Users", icon: Users, path: "/admin/users" },
   { title: "Enrollments", icon: UserPlus, path: "/admin/enrollments" },
 ];
