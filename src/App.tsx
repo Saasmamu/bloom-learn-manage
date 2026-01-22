@@ -23,6 +23,8 @@ import { ClassManagement } from "./components/admin/ClassManagement";
 import { SubjectManagement } from "./components/admin/SubjectManagement";
 import { UserManagement } from "./components/admin/UserManagement";
 import { EnrollmentManagement } from "./components/admin/EnrollmentManagement";
+import { SectionManagement } from "./components/admin/SectionManagement";
+import { TimetableManagement } from "./components/admin/TimetableManagement";
 
 const queryClient = new QueryClient();
 
@@ -115,6 +117,26 @@ const App = () => (
               <ProtectedRoute requiredRole="admin">
                 <AdminLayout>
                   <EnrollmentManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/sections" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <SectionManagement />
+                </AdminLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/timetable" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminLayout>
+                  <TimetableManagement />
                 </AdminLayout>
               </ProtectedRoute>
             } 
