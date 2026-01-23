@@ -23,6 +23,8 @@ import {
   UserPlus,
   LayoutGrid,
   Clock,
+  Megaphone,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -43,6 +45,8 @@ const menuItems = [
   { title: "Timetable", icon: Clock, path: "/admin/timetable" },
   { title: "Users", icon: Users, path: "/admin/users" },
   { title: "Enrollments", icon: UserPlus, path: "/admin/enrollments" },
+  { title: "Announcements", icon: Megaphone, path: "/admin/announcements" },
+  { title: "Messages", icon: MessageCircle, path: "/admin/messages" },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
