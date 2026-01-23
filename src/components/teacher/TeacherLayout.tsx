@@ -33,12 +33,14 @@ interface TeacherLayoutProps {
 
 const menuItems = [
   { title: "My Classes", icon: GraduationCap, path: "/teacher/classes" },
+  { title: "Schedule", icon: Calendar, path: "/teacher/schedule" },
   { title: "Assignments", icon: ClipboardList, path: "/teacher/assignments" },
   { title: "Grading", icon: FileText, path: "/teacher/grading" },
   { title: "Attendance", icon: Calendar, path: "/teacher/attendance" },
   { title: "Materials", icon: BookOpen, path: "/teacher/materials" },
   { title: "Students", icon: Users, path: "/teacher/students" },
   { title: "Messages", icon: MessageCircle, path: "/teacher/messages" },
+  { title: "Profile", icon: Users, path: "/teacher/profile" },
 ];
 
 export function TeacherLayout({ children }: TeacherLayoutProps) {
