@@ -5,7 +5,9 @@ import { TeacherAssignments } from "@/components/teacher/TeacherAssignments";
 import { TeacherGrading } from "@/components/teacher/TeacherGrading";
 import { TeacherAttendance } from "@/components/teacher/TeacherAttendance";
 import { TeacherMaterials } from "@/components/teacher/TeacherMaterials";
+import { TeacherSchedule } from "@/components/teacher/TeacherSchedule";
 import { MessagesPage } from "@/components/shared/MessagesPage";
+import { ProfilePage } from "@/components/shared/ProfilePage";
 
 export default function TeacherDashboard() {
   return (
@@ -13,12 +15,14 @@ export default function TeacherDashboard() {
       <Routes>
         <Route path="/" element={<Navigate to="/teacher/classes" replace />} />
         <Route path="/classes" element={<TeacherClasses />} />
+        <Route path="/schedule" element={<TeacherSchedule />} />
         <Route path="/assignments" element={<TeacherAssignments />} />
         <Route path="/grading" element={<TeacherGrading />} />
         <Route path="/attendance" element={<TeacherAttendance />} />
         <Route path="/materials" element={<TeacherMaterials />} />
         <Route path="/students" element={<div>Students coming soon</div>} />
         <Route path="/messages" element={<MessagesPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </TeacherLayout>
   );

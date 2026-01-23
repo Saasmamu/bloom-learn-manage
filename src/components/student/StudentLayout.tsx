@@ -38,6 +38,7 @@ const menuItems = [
   { title: "Schedule", icon: Calendar, path: "/student/schedule" },
   { title: "Materials", icon: FileText, path: "/student/materials" },
   { title: "Messages", icon: MessageCircle, path: "/student/messages" },
+  { title: "Profile", icon: GraduationCap, path: "/student/profile" },
 ];
 
 export function StudentLayout({ children }: StudentLayoutProps) {
