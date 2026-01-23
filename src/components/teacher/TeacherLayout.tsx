@@ -20,6 +20,7 @@ import {
   LogOut,
   GraduationCap,
   Bell,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -37,6 +38,7 @@ const menuItems = [
   { title: "Attendance", icon: Calendar, path: "/teacher/attendance" },
   { title: "Materials", icon: BookOpen, path: "/teacher/materials" },
   { title: "Students", icon: Users, path: "/teacher/students" },
+  { title: "Messages", icon: MessageCircle, path: "/teacher/messages" },
 ];
 
 export function TeacherLayout({ children }: TeacherLayoutProps) {

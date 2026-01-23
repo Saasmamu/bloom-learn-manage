@@ -5,6 +5,7 @@ import { StudentAssignments } from "@/components/student/StudentAssignments";
 import { StudentGrades } from "@/components/student/StudentGrades";
 import { StudentSchedule } from "@/components/student/StudentSchedule";
 import { StudentMaterials } from "@/components/student/StudentMaterials";
+import { MessagesPage } from "@/components/shared/MessagesPage";
 
 export default function StudentDashboard() {
   return (
@@ -16,6 +17,7 @@ export default function StudentDashboard() {
         <Route path="/grades" element={<StudentGrades />} />
         <Route path="/schedule" element={<StudentSchedule />} />
         <Route path="/materials" element={<StudentMaterials />} />
+        <Route path="/messages" element={<MessagesPage />} />
       </Routes>
     </StudentLayout>
   );

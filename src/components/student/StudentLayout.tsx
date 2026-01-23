@@ -20,6 +20,7 @@ import {
   GraduationCap,
   Bell,
   BarChart3,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -36,6 +37,7 @@ const menuItems = [
   { title: "Grades", icon: BarChart3, path: "/student/grades" },
   { title: "Schedule", icon: Calendar, path: "/student/schedule" },
   { title: "Materials", icon: FileText, path: "/student/materials" },
+  { title: "Messages", icon: MessageCircle, path: "/student/messages" },
 ];
 
 export function StudentLayout({ children }: StudentLayoutProps) {
